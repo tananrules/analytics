@@ -1,13 +1,27 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-  // setupController: function(controller) {
-  //   controller.set()
-  // },
+  setupController: function(controller) {
+
+    new Ember.RSVP.Promise( function (resolve, reject) {
+      Ember.$.ajax({
+        contentType: "application/json; charset=utf-8",
+        type: 'GET',
+        url: '/api/merchants/1/items'
+      }).done( function (json) {
+        json.forEach(function (singleObject) {
+          controller.get('items').addObject(singleObject);
+          controller.get('selectedItems').addObject(singleObject);
+        });
+        resolve(json);
+      }).fail( function (jqXHR, textStatus, error) {
+        reject(error);
+      });
+    });
+  },
 
   actions: {
     createItems: function(text) {
-      var record = {};
       var controller = this.controllerFor('analytics');
 
       var data = {};
@@ -21,10 +35,9 @@ export default Ember.Route.extend({
           data: data,
           processData: false,
           type: 'POST',
-          url: 'localhost:3000/api/merchants/1/items'
+          url: 'api/merchants/1/items'
         }).done( function (json) {
-          debugger
-          var record
+          var record = json
           controller.get('selectedItems').addObject(record);
           controller.get('items').addObject(record);
           resolve(json);
@@ -32,23 +45,6 @@ export default Ember.Route.extend({
           reject(error);
         });
       });
-
-
-      // if (controller.get('selectedItems').length === 0) {
-      //   record.id = 1;
-      // } else {
-      //   record.id = controller.get('selectedItems').length + 1;
-      // }
-
-      // record.name = text;
-
-      // var textAlreadyExist = controller.get('selectedItems').findBy('name', text);
-      // if (textAlreadyExist) {
-      //   alert(text+" already exist");
-      // } else {
-      //   controller.get('selectedItems').addObject(record);
-      //   controller.get('items').addObject(record);
-      // }
     }
   }
 });
