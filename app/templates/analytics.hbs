@@ -1,1 +1,28 @@
+<div class="text-center col-md-4 col-md-offset-4">
+  {{#md-card title="Meghana Foods"
+      titleClass="orange-text"
+      image="images/Final+Logo+Meghana+1429524740.png"
+      id="image-card"}}
+
+      {{#md-card-content}}
+          {{ember-selectize
+            content=items
+            optionValuePath="content.id"
+            optionLabelPath="content.name"
+            selection=selectedItems
+            multiple=true
+            placeholder="Add Items"
+            create-item="createItems" 
+          }}
+      {{/md-card-content}}
+
+      {{#md-card-action}}
+          {{md-btn text='Generate Analytics Data'
+            action='debug'
+            class='btn-flat teal darken-4">'}}
+      {{/md-card-action}}
+
+  {{/md-card}}
+</div>
+
 {{outlet}}
