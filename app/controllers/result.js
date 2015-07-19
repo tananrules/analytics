@@ -2,11 +2,11 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
   data1: {
-    labels: ["January", "February", "March", "April", "May", "June", "July"],
+    labels: ["Veg Biryani", "Chicken Biryani", "Hakka Noodles", "Gobi Manchurian", "Panner Tikka", "Chicken Tikka", "Gobi 65"],
     datasets: [
         {
             label: "My First dataset",
-            fillColor: "rgba(220,220,220,0.5)",
+            fillColor: "#01DF01",
             strokeColor: "rgba(220,220,220,0.8)",
             highlightFill: "rgba(220,220,220,0.75)",
             highlightStroke: "rgba(220,220,220,1)",
@@ -14,7 +14,7 @@ export default Ember.Controller.extend({
         },
         {
             label: "My Second dataset",
-            fillColor: "rgba(151,187,205,0.5)",
+            fillColor: "#F7464A",
             strokeColor: "rgba(151,187,205,0.8)",
             highlightFill: "rgba(151,187,205,0.75)",
             highlightStroke: "rgba(151,187,205,1)",
@@ -25,22 +25,16 @@ export default Ember.Controller.extend({
 
   data2: [
           {
-              value: 300,
-              color:"#F7464A",
-              highlight: "#FF5A5E",
-              label: "Red"
+              value: 66,
+              color:"#01DF01",
+              highlight: "#00FF00",
+              label: "Positive"
           },
           {
-              value: 50,
-              color: "#46BFBD",
-              highlight: "#5AD3D1",
-              label: "Green"
-          },
-          {
-              value: 100,
-              color: "#FDB45C",
-              highlight: "#FFC870",
-              label: "Yellow"
+              value: 33,
+              color: "#F7464A",
+              highlight: "#FA5858",
+              label: "Negative"
           }
         ],
 
