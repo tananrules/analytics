@@ -37,7 +37,7 @@ export default Ember.Route.extend({
           type: 'POST',
           url: 'api/merchants/1/items'
         }).done( function (json) {
-          var record = json
+          var record = json;
           controller.get('selectedItems').addObject(record);
           controller.get('items').addObject(record);
           resolve(json);
